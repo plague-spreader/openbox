@@ -168,6 +168,8 @@ ObClient* focus_cycle(gboolean forward, gboolean all_desktops,
 
         // here we need to reset the "start" and "it" pointers
         list = list_same_monitor;
+        if (!list) // do not focus on inexistent monitor
+            return NULL;
 
         if (focus_cycle_target == NULL)
             start = it = g_list_find(list, focus_client);
